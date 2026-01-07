@@ -10,18 +10,16 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [textInput, setTextInput] = useState('');
   //su kien thay doi text input
-  const onTextInputChange =(e) => {
+  const onTextInputChange = useCallback((e) => {
     setTextInput(e.target.value);
-    console.log(textInput);
-  ;
-}
+  }, []);
   //su kien click button them
-  const onAddBtnClick = (e) => {
+  const onAddBtnClick = useCallback((e) => {
     //them text input vao danh sach todo
     setTodoList([{id: v4(), name: textInput, isCompleted: false},...todoList]);
     //xoa text input
     setTextInput('');
-  };
+  }, [textInput, todoList]);
   return (
     <>
       <h3>Danh sách cần làm</h3>

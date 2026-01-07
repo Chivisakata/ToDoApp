@@ -7,27 +7,25 @@ const StyledButton = styled(Button)`
   margin-top: 2px;
   text-align: left;
 
-  &:hover {
-    .check-icon {
-      display: inline-block;
-    }
-}
-
   .check-icon {
-  display: none;
+    display: none;
+  }
 
-  &:hover {
+  &:hover .check-icon {
+    display: inline-block;
+  }
+
+  .check-icon:hover {
     background-color: #d5d1d1ff;
     border-radius: 3px;
   }
-}
 `;
 
 
 export default function ToDo({todo, onCheckBtnClick}) {
   return (
     <>
-      <StyledButton iconAfter={<span className="check-icon"><CheckIcon primaryColor="#4fff4f" onClick={() => onCheckBtnClick(todo.id)}/></span>} shouldFitContainer>{todo.name}</StyledButton>
+      <StyledButton iconAfter={<span onClick={() => onCheckBtnClick(todo.id)} className="check-icon"><CheckIcon primaryColor="#4fff4f" /></span>} shouldFitContainer>{todo.name}</StyledButton>
     </>
   )
 }

@@ -22,6 +22,10 @@ function App() {
     //xoa text input
     setTextInput('');
   }, [textInput, todoList]);
+  //su kien click button check
+  const onCheckBtnClick = useCallback((id) => {
+    setTodoList(prevState => prevState.map(todo => todo.id === id ? {...todo, isCompleted: true } : todo));
+  }, []);
   return (
     <>
       <h3>Danh sách cần làm</h3>
@@ -36,7 +40,7 @@ function App() {
         value={textInput}
         onChange={onTextInputChange}>
       </Textfield>
-      <ToDoList todoList={todoList}/>
+      <ToDoList todoList={todoList} onCheckBtnClick={onCheckBtnClick} />
     </>
   );  
 }

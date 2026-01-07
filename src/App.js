@@ -15,6 +15,8 @@ function App() {
   }, []);
   //su kien click button them
   const onAddBtnClick = useCallback((e) => {
+    //loai bo truong hop khong co text input
+    if(textInput.trim() === '') return;
     //them text input vao danh sach todo
     setTodoList([{id: v4(), name: textInput, isCompleted: false},...todoList]);
     //xoa text input

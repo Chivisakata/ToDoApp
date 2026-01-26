@@ -8,6 +8,9 @@ const StyledButton = styled(Button)`
   margin-top: 2px;
   text-align: left;
   position: relative;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
   }
   &&{${(item) => item.isCompleted && css`
     text-decoration: line-through;
@@ -37,7 +40,7 @@ export default function ToDo({todo, onCheckBtnClick}) {
       <StyledButton isCompleted={todo.isCompleted} iconAfter={ !todo.isCompleted && (
         <span onClick={() => onCheckBtnClick(todo.id)} className="check-icon">
           <CheckIcon primaryColor="#4fff4f" />
-        </span>)} shouldFitContainer>{todo.name}
+        </span>)} >{todo.name}
       </StyledButton>
     </>
   )

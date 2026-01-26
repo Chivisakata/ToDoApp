@@ -3,8 +3,15 @@ import Button from '@atlaskit/button';
 import ToDoList from './components/ToDoList.js';
 import { useCallback, useEffect, useState } from 'react';
 import { v4 } from 'uuid';
+import styled from 'styled-components';
 
 const TODO_APP_STORAGE_KEY = 'TODO_APP';
+
+const AppContainer = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
   //tao state cho text fielld va danh sach todo
@@ -40,7 +47,7 @@ function App() {
     setTodoList(prevState => prevState.map(todo => todo.id === id ? {...todo, isCompleted: true } : todo));
   }, []);
   return (
-    <>
+    <AppContainer>
       <h3>Danh sách cần làm</h3>
       <Textfield
         name="add-todo" 
@@ -49,12 +56,12 @@ function App() {
           <Button isDisabled={!textInput} appearance='primary' style={{borderRadius: '8px', marginRight: '4px'}} onClick={onAddBtnClick} >
             Thêm   
           </Button>}
-        style={{width: '500px'}}
+        style={{width: '100%', boxSizing: 'border-box'}}
         value={textInput}
         onChange={onTextInputChange}>
       </Textfield>
       <ToDoList todoList={todoList} onCheckBtnClick={onCheckBtnClick} />
-    </>
+    </AppContainer>
   );  
 }
 

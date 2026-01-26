@@ -4,15 +4,20 @@ import CheckIcon from '@atlaskit/icon/glyph/check';
 import styled, {css} from "styled-components";
 
 const StyledButton = styled(Button)`
+&&{
   margin-top: 2px;
   text-align: left;
-
-  ${(item) => item.isCompleted && css`
+  position: relative;
+  }
+  &&{${(item) => item.isCompleted && css`
     text-decoration: line-through;
     `}
-
+  }
   .check-icon {
     display: none;
+    position: absolute;
+    right: 8px;
+    transform: translateY(-50%);
   }
 
   &:hover .check-icon {
